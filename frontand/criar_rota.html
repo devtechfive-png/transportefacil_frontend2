@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Cadastrar rota - Transporte Fácil
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="css/criar_rota.css"
+    >
+
+</head>
+
+<body>
+
+    <div class="pagina">
+
+        <!-- =====================================
+             CABEÇALHO
+        ====================================== -->
+
+        <header class="cabecalho">
+
+            <button
+                id="btnVoltar"
+                class="btn-voltar"
+                type="button"
+            >
+                ←
+            </button>
+
+            <div class="titulo-cabecalho">
+
+                <span class="icone-cabecalho">
+                    🚌
+                </span>
+
+                <div>
+
+                    <h1>
+                        Transporte Fácil
+                    </h1>
+
+                    <p>
+                        Cadastro de rota
+                    </p>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =====================================
+             CONTEÚDO
+        ====================================== -->
+
+        <main class="conteudo">
+
+            <section class="titulo-pagina">
+
+                <span>
+                    Gerenciamento de rotas
+                </span>
+
+                <h2 id="tituloFormulario">
+                    Cadastrar nova rota
+                </h2>
+
+                <p>
+                    Informe os dados da rota.
+                </p>
+
+            </section>
+
+
+            <!-- =====================================
+                 FORMULÁRIO
+            ====================================== -->
+
+            <form
+                id="formRota"
+                class="formulario"
+                novalidate
+            >
+
+                <!-- EMPRESA -->
+
+                <div class="grupo-campo">
+
+                    <label for="empresa">
+
+                        Empresa / Agência
+
+                        <span class="obrigatorio">
+                            *
+                        </span>
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="empresa"
+                        name="empresa"
+                        placeholder="Digite o nome da empresa ou agência"
+                    >
+
+                </div>
+
+
+                <!-- E-MAIL -->
+
+                <div class="grupo-campo">
+
+                    <label for="emailResponsavel">
+
+                        E-mail do responsável
+
+                        <span class="obrigatorio">
+                            *
+                        </span>
+
+                    </label>
+
+                    <input
+                        type="email"
+                        id="emailResponsavel"
+                        name="emailResponsavel"
+                        placeholder="responsavel@email.com"
+                    >
+
+                    <small>
+                        Informe um e-mail válido.
+                    </small>
+
+                </div>
+
+
+                <!-- ORIGEM / DESTINO -->
+
+                <div class="linha-campos">
+
+                    <div class="grupo-campo">
+
+                        <label for="origem">
+
+                            Origem
+
+                            <span class="obrigatorio">
+                                *
+                            </span>
+
+                        </label>
+
+                        <input
+                            type="text"
+                            id="origem"
+                            name="origem"
+                            placeholder="Ex.: Lagoa Alegre"
+                        >
+
+                    </div>
+
+
+                    <div class="grupo-campo">
+
+                        <label for="destino">
+
+                            Destino
+
+                            <span class="obrigatorio">
+                                *
+                            </span>
+
+                        </label>
+
+                        <input
+                            type="text"
+                            id="destino"
+                            name="destino"
+                            placeholder="Ex.: Teresina"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- VIA -->
+
+                <div class="grupo-campo">
+
+                    <label for="via">
+
+                        Via
+
+                        <span class="opcional">
+                            opcional
+                        </span>
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="via"
+                        name="via"
+                        placeholder="Ex.: BR-343"
+                    >
+
+                </div>
+
+
+                <!-- TIPO -->
+
+                <div class="grupo-campo">
+
+                    <label for="tipo">
+
+                        Tipo de transporte
+
+                        <span class="obrigatorio">
+                            *
+                        </span>
+
+                    </label>
+
+                    <select
+                        id="tipo"
+                        name="tipo"
+                    >
+
+                        <option value="">
+                            Selecione o tipo de transporte
+                        </option>
+
+                        <option value="onibus">
+                            🚌 Ônibus
+                        </option>
+
+                        <option value="van">
+                            🚐 Van
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- DIAS -->
+
+                <div class="grupo-campo">
+
+                    <label>
+
+                        Dias de funcionamento
+
+                        <span class="obrigatorio">
+                            *
+                        </span>
+
+                    </label>
+
+                    <small>
+                        Selecione pelo menos um dia.
+                    </small>
+
+
+                    <div class="dias">
+
+                        <label class="check-dia">
+                            <input
+                                type="checkbox"
+                                name="dias"
+                                value="segunda"
+                            >
+                            <span>Segunda</span>
+                        </label>
+
+
+                        <label class="check-dia">
+                            <input
+                                type="checkbox"
+                                name="dias"
+                                value="terca"
+                            >
+                            <span>Terça</span>
+                        </label>
+
+
+                        <label class="check-dia">
+                            <input
+                                type="checkbox"
+                                name="dias"
+                                value="quarta"
+                            >
+                            <span>Quarta</span>
+                        </label>
+
+
+                        <label class="check-dia">
+                            <input
+                                type="checkbox"
+                                name="dias"
+                                value="quinta"
+                            >
+                            <span>Quinta</span>
+                        </label>
+
+
+                        <label class="check-dia">
+                            <input
+                                type="checkbox"
+                                name="dias"
+                                value="sexta"
+                            >
+                            <span>Sexta</span>
+                        </label>
+
+
+                        <label class="check-dia">
+                            <input
+                                type="checkbox"
+                                name="dias"
+                                value="sabado"
+                            >
+                            <span>Sábado</span>
+                        </label>
+
+
+                        <label class="check-dia">
+                            <input
+                                type="checkbox"
+                                name="dias"
+                                value="domingo"
+                            >
+                            <span>Domingo</span>
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================
+                     HORÁRIOS
+                ====================================== -->
+
+                <div class="grupo-campo">
+
+                    <div class="titulo-horarios">
+
+                        <div>
+
+                            <label>
+
+                                Horários das viagens
+
+                                <span class="opcional">
+                                    opcional
+                                </span>
+
+                            </label>
+
+                            <small>
+                                Você pode cadastrar a rota sem informar horários.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- HORÁRIO 1 -->
+
+                    <div class="horario-item">
+
+                        <div class="numero-horario">
+                            1
+                        </div>
+
+
+                        <div class="campo-horario">
+
+                            <label for="saida1">
+                                Saída
+                            </label>
+
+                            <input
+                                type="time"
+                                id="saida1"
+                                class="horario-saida"
+                            >
+
+                        </div>
+
+
+                        <div class="campo-horario">
+
+                            <label for="chegada1">
+                                Chegada
+                            </label>
+
+                            <input
+                                type="time"
+                                id="chegada1"
+                                class="horario-chegada"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- HORÁRIO 2 -->
+
+                    <div class="horario-item">
+
+                        <div class="numero-horario">
+                            2
+                        </div>
+
+
+                        <div class="campo-horario">
+
+                            <label for="saida2">
+                                Saída
+                            </label>
+
+                            <input
+                                type="time"
+                                id="saida2"
+                                class="horario-saida"
+                            >
+
+                        </div>
+
+
+                        <div class="campo-horario">
+
+                            <label for="chegada2">
+                                Chegada
+                            </label>
+
+                            <input
+                                type="time"
+                                id="chegada2"
+                                class="horario-chegada"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- HORÁRIOS EXTRAS -->
+
+                    <div
+                        id="listaHorariosExtras"
+                        class="lista-horarios-extras"
+                    ></div>
+
+
+                    <button
+                        id="btnAdicionarHorario"
+                        class="btn-adicionar-horario"
+                        type="button"
+                    >
+                        + Adicionar outro horário
+                    </button>
+
+                </div>
+
+
+                <!-- INFORMAÇÕES -->
+
+                <div class="grupo-campo">
+
+                    <label for="informacoes">
+
+                        Informações adicionais
+
+                        <span class="opcional">
+                            opcional
+                        </span>
+
+                    </label>
+
+                    <textarea
+                        id="informacoes"
+                        name="informacoes"
+                        rows="4"
+                        placeholder="Informe outras informações importantes sobre a rota..."
+                    ></textarea>
+
+                </div>
+
+
+                <!-- MENSAGEM -->
+
+                <div
+                    id="mensagem"
+                    class="mensagem"
+                ></div>
+
+
+                <!-- BOTÕES -->
+
+                <div class="acoes-formulario">
+
+                    <button
+                        id="btnCancelar"
+                        class="btn-cancelar"
+                        type="button"
+                    >
+                        Cancelar
+                    </button>
+
+
+                    <button
+                        id="btnSalvar"
+                        class="btn-salvar"
+                        type="submit"
+                    >
+                        Salvar rota
+                    </button>
+
+                </div>
+
+            </form>
+
+        </main>
+
+    </div>
+
+
+    <script src="js/criar_rota.js"></script>
+
+</body>
+
+</html>
