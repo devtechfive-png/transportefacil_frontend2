@@ -1,218 +1,311 @@
-<meta charset="UTF-8">
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<head>
+    <meta charset="UTF-8">
 
-<title>Transporte Fácil</title>
-
-<link
-    rel="stylesheet"
-    href="css/tela_principal.css"
->
-
-
-<!-- =====================================
-     CABEÇALHO
-====================================== -->
-
-<header class="cabecalho">
-
-    <button
-        id="btnVoltar"
-        class="btn-voltar"
-        type="button"
-        aria-label="Voltar"
-    >
-        ←
-    </button>
-
-
-    <h1>
-        Transporte Fácil
-    </h1>
-
-
-    <button
-        id="btnMenu"
-        class="btn-menu"
-        type="button"
-        aria-label="Abrir menu"
-    >
-        ☰
-    </button>
-
-
-    <div
-        id="menuDropdown"
-        class="menu-dropdown"
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
     >
 
-        <button
-            class="item-menu"
-            data-acao="login"
-            type="button"
-        >
-            <span class="icone-menu">🔐</span>
-            Login
-        </button>
+    <title>Transporte Fácil</title>
+
+    <link
+        rel="stylesheet"
+        href="css/tela_principal.css"
+    >
+</head>
+
+<body>
+
+    <!-- =====================================
+         TOPO COM IMAGEM DE LAGOA ALEGRE
+    ====================================== -->
+
+    <section class="topo-rotas">
+
+        <!-- IMAGEM DE FUNDO -->
+        <div
+            class="fundo-topo"
+            aria-hidden="true"
+        ></div>
 
 
-        <button
-            class="item-menu"
-            data-acao="favoritos"
-            type="button"
-        >
-            <span class="icone-menu">♡</span>
-            Favoritos
-        </button>
+        <!-- CABEÇALHO -->
+
+        <header class="cabecalho">
+
+            <button
+                id="btnVoltar"
+                class="btn-voltar"
+                type="button"
+                aria-label="Voltar"
+            >
+                ←
+            </button>
 
 
-        <button
-            class="item-menu"
-            data-acao="compartilhar"
-            type="button"
-        >
-            <span class="icone-menu">↗</span>
-            Compartilhar
-        </button>
+            <button
+                id="btnMenu"
+                class="btn-menu"
+                type="button"
+                aria-label="Abrir menu"
+            >
+                ☰
+            </button>
 
 
-        <button
-            class="item-menu"
-            data-acao="configuracoes"
-            type="button"
-        >
-            <span class="icone-menu">⚙</span>
-            Configurações
-        </button>
+            <!-- MENU DROPDOWN -->
+
+            <div
+                id="menuDropdown"
+                class="menu-dropdown"
+            >
+
+                <button
+                    class="item-menu"
+                    data-acao="login"
+                    type="button"
+                >
+                    <span class="icone-menu">🔐</span>
+                    Login
+                </button>
+
+                <button
+                    class="item-menu"
+                    data-acao="compartilhar"
+                    type="button"
+                >
+                    <span class="icone-menu">↗</span>
+                    Compartilhar
+                </button>
+
+                <button
+                    class="item-menu sair"
+                    data-acao="sair"
+                    type="button"
+                >
+                    <span class="icone-menu">↪</span>
+                    Sair
+                </button>
+
+            </div>
+
+        </header>
 
 
-        <button
-            class="item-menu sair"
-            data-acao="sair"
-            type="button"
-        >
-            <span class="icone-menu">↪</span>
-            Sair
-        </button>
+        <!-- BUSCA SOBRE A IMAGEM -->
 
-    </div>
+        <div class="area-busca">
 
-</header>
+            <span
+                class="icone-busca"
+                aria-hidden="true"
+            >
+                🔎
+            </span>
 
+            <input
+                type="text"
+                id="campoBusca"
+                placeholder="Encontre sua rota e consulte as informações..."
+                autocomplete="off"
+                aria-label="Buscar linhas, destinos ou vias"
+            >
 
-<!-- =====================================
-     CONTEÚDO
-====================================== -->
+            <button
+                id="btnLimpar"
+                class="btn-limpar"
+                type="button"
+                aria-label="Limpar busca"
+            >
+                ×
+            </button>
 
-<main class="conteudo">
-
-
-    <section class="titulo-secao">
-
-        <h2>
-            Linhas disponíveis
-        </h2>
-
-        <p>
-            Encontre sua rota e consulte as informações.
-        </p>
+        </div>
 
     </section>
 
 
-    <!-- =================================
-         BUSCA
-    ================================== -->
+    <!-- =====================================
+         CONTEÚDO PRINCIPAL
+    ====================================== -->
 
-    <div class="area-busca">
+    <main class="conteudo">
 
-        <span class="icone-busca">
-            🔎
-        </span>
+        <!--
+            O título permanece no HTML para preservar
+            a estrutura original, mas sua exibição
+            será controlada pelo CSS.
+        -->
+
+        <section class="titulo-secao">
+
+            <h2>
+                Linhas disponíveis
+            </h2>
+
+            <p>
+                Encontre sua rota e consulte as informações.
+            </p>
+
+        </section>
 
 
-        <input
-            type="text"
-            id="campoBusca"
-            placeholder="Buscar linha, destino ou via..."
-            autocomplete="off"
+        <!-- CABEÇALHO DOS RESULTADOS -->
+
+        <section class="cabecalho-resultados">
+
+            <h3>
+                Rotas
+            </h3>
+
+            <span id="contadorLinhas">
+                Carregando...
+            </span>
+
+        </section>
+
+
+        <!-- LISTA DE ROTAS -->
+
+        <div
+            id="listaLinhas"
+            class="lista-linhas"
+        ></div>
+
+
+        <!-- SEM RESULTADOS -->
+
+        <div
+            id="semResultados"
+            class="sem-resultados"
         >
 
+            <span aria-hidden="true">
+                🔎
+            </span>
 
-        <button
-            id="btnLimpar"
-            class="btn-limpar"
-            type="button"
-            aria-label="Limpar busca"
-        >
-            ×
-        </button>
+            <h3>
+                Nenhuma rota encontrada
+            </h3>
 
-    </div>
+            <p>
+                Tente buscar por outro nome, destino ou via.
+            </p>
 
+        </div>
 
-    <!-- =================================
-         CABEÇALHO DOS RESULTADOS
-    ================================== -->
-
-    <section class="cabecalho-resultados">
-
-        <h3>
-            Rotas
-        </h3>
+    </main>
 
 
-        <span id="contadorLinhas">
-            Carregando...
-        </span>
+    <!-- =====================================
+         RODAPÉ INSTITUCIONAL
+    ====================================== -->
 
-    </section>
+    <footer class="rodape">
 
+        <!-- CONTATO -->
 
-    <!-- =================================
-         LISTA DE ROTAS
-    ================================== -->
+        <div class="rodape-item rodape-contato">
 
-    <div
-        id="listaLinhas"
-        class="lista-linhas"
-    >
-    </div>
+            <span
+                class="rodape-icone"
+                aria-hidden="true"
+            >
+                ✉
+            </span>
 
+            <div class="rodape-texto">
 
-    <!-- =================================
-         SEM RESULTADOS
-    ================================== -->
+                <strong>
+                    Dúvidas?
+                </strong>
 
-    <div
-        id="semResultados"
-        class="sem-resultados"
-    >
+                <span>
+                    Fale conosco:
+                </span>
 
-        <span>
-            🔎
-        </span>
+                <a href="mailto:transporte.facil@devtech.com">
+                    transporte.facil@devtech.com
+                </a>
 
+            </div>
 
-        <h3>
-            Nenhuma rota encontrada
-        </h3>
-
-
-        <p>
-            Tente buscar por outro nome, destino ou via.
-        </p>
-
-    </div>
-
-</main>
+        </div>
 
 
-<script src="js/tela_principal.js"></script>
+        <!-- MUNICÍPIO -->
 
-<footer class="rodape">
-    Criado e desenvolvido por <strong>Devs Tech</strong>
-</footer>
+        <div class="rodape-item rodape-local">
+
+            <span
+                class="rodape-icone"
+                aria-hidden="true"
+            >
+                📍
+            </span>
+
+            <div class="rodape-texto">
+
+                <strong>
+                    Lagoa Alegre – PI
+                </strong>
+
+                <span>
+                    Transporte mais acessível para todos
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- FRASE INSTITUCIONAL -->
+
+        <div class="rodape-item rodape-conexao">
+
+            <span
+                class="rodape-icone"
+                aria-hidden="true"
+            >
+                👥
+            </span>
+
+            <div class="rodape-texto">
+
+                <span>
+                    Conectando você à sua cidade
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- CRÉDITOS -->
+
+        <div class="rodape-item rodape-credito">
+
+            <span>
+                Criado por
+            </span>
+
+            <strong>
+                <span class="marca-dev">DevTech</span>
+                Tecnologias
+            </strong>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT ORIGINAL -->
+
+    <script src="js/tela_principal.js"></script>
+
+</body>
+
+</html>

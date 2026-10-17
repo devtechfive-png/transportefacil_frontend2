@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
 
 <head>
-
     <meta charset="UTF-8">
 
     <meta
@@ -17,30 +15,85 @@
         rel="stylesheet"
         href="css/tela_inicial.css"
     >
-
 </head>
-
 
 <body>
 
     <main class="tela-inicial">
 
-        <!-- =====================================
-             FUNDO
-        ====================================== -->
+        <!-- FUNDO ORIGINAL -->
+        <div
+            class="overlay"
+            aria-hidden="true"
+        ></div>
 
-        <div class="overlay"></div>
 
-
-        <!-- =====================================
-             CONTEÚDO PRINCIPAL
-        ====================================== -->
-
+        <!-- CONTEÚDO PRINCIPAL -->
         <div class="conteudo">
 
-            <section class="logo">
+            <!-- LOGO E NOME DO APLICATIVO -->
+            <section
+                class="logo"
+                aria-label="Transporte Fácil"
+            >
 
-                <div class="nome-aplicativo">
+                <!-- ÍCONE DE ÔNIBUS -->
+                <div
+                    class="icone-marca"
+                    aria-hidden="true"
+                >
+                    <svg
+                        viewBox="0 0 48 48"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <rect
+                            x="8"
+                            y="7"
+                            width="32"
+                            height="30"
+                            rx="5"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="4"
+                        />
+
+                        <rect
+                            x="13"
+                            y="12"
+                            width="22"
+                            height="13"
+                            rx="2"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="3"
+                        />
+
+                        <circle
+                            cx="15"
+                            cy="33"
+                            r="3"
+                            fill="currentColor"
+                        />
+
+                        <circle
+                            cx="33"
+                            cy="33"
+                            r="3"
+                            fill="currentColor"
+                        />
+
+                        <path
+                            d="M13 41h5M30 41h5"
+                            stroke="currentColor"
+                            stroke-width="3"
+                            stroke-linecap="round"
+                        />
+                    </svg>
+                </div>
+
+
+                <!-- NOME DO APLICATIVO -->
+                <h1 class="nome-aplicativo">
 
                     <span class="transporte">
                         Transporte
@@ -50,58 +103,263 @@
                         Fácil
                     </span>
 
+                </h1>
+
+            </section>
+
+
+            <!-- FRASE DE APRESENTAÇÃO -->
+            <p class="subtitulo">
+                Sua cidade, seus caminhos
+                <br>
+                e seus horários
+                <strong>na palma da sua mão.</strong>
+            </p>
+
+
+            <!-- BOTÃO ENTRAR -->
+            <div class="area-botao">
+
+                <button
+                    id="btnEntrar"
+                    class="btn-entrar"
+                    type="button"
+                >
+
+                    <span>
+                        Entrar
+                    </span>
+
+                    <span
+                        class="seta"
+                        aria-hidden="true"
+                    >
+                        →
+                    </span>
+
+                </button>
+
+            </div>
+
+
+            <!-- SERVIÇOS DISPONÍVEIS -->
+            <section
+                class="servicos"
+                aria-label="Informações disponíveis"
+            >
+
+                <!-- ROTAS -->
+                <div class="servico">
+
+                    <div
+                        class="servico-icone"
+                        aria-hidden="true"
+                    >
+                        <svg
+                            viewBox="0 0 48 48"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M10 37C5 37 5 28 12 24L34 13C41 9 43 18 36 22L15 34"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+
+                            <circle
+                                cx="10"
+                                cy="37"
+                                r="4"
+                                fill="currentColor"
+                            />
+
+                            <circle
+                                cx="37"
+                                cy="12"
+                                r="4"
+                                fill="currentColor"
+                            />
+                        </svg>
+                    </div>
+
+                    <div class="servico-texto">
+                        <strong>Rotas</strong>
+                        <span>Conheça os trajetos</span>
+                    </div>
+
+                </div>
+
+
+                <!-- HORÁRIOS -->
+                <div class="servico">
+
+                    <div
+                        class="servico-icone"
+                        aria-hidden="true"
+                    >
+                        <svg
+                            viewBox="0 0 48 48"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <circle
+                                cx="24"
+                                cy="24"
+                                r="17"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="4"
+                            />
+
+                            <path
+                                d="M24 13V25L32 30"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    </div>
+
+                    <div class="servico-texto">
+                        <strong>Horários</strong>
+                        <span>Consulte as linhas</span>
+                    </div>
+
+                </div>
+
+
+                <!-- PARADAS -->
+                <div class="servico">
+
+                    <div
+                        class="servico-icone"
+                        aria-hidden="true"
+                    >
+                        <svg
+                            viewBox="0 0 48 48"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <rect
+                                x="9"
+                                y="6"
+                                width="30"
+                                height="31"
+                                rx="5"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="4"
+                            />
+
+                            <path
+                                d="M14 12H34V25H14Z"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="3"
+                                stroke-linejoin="round"
+                            />
+
+                            <circle
+                                cx="16"
+                                cy="33"
+                                r="3"
+                                fill="currentColor"
+                            />
+
+                            <circle
+                                cx="32"
+                                cy="33"
+                                r="3"
+                                fill="currentColor"
+                            />
+
+                            <path
+                                d="M15 42H33"
+                                stroke="currentColor"
+                                stroke-width="3"
+                                stroke-linecap="round"
+                            />
+                        </svg>
+                    </div>
+
+                    <div class="servico-texto">
+                        <strong>Paradas</strong>
+                        <span>Saiba onde embarcar</span>
+                    </div>
+
                 </div>
 
             </section>
 
-        </div>
 
+            <!-- IDENTIFICAÇÃO DO MUNICÍPIO -->
+            <div class="informacao-local">
 
-        <!-- =====================================
-             ÁREA DO BOTÃO
-        ====================================== -->
+                <svg
+                    class="icone-localizacao"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M12 22S3 14.8 3 9.5a9 9 0 1 1 18 0C21 14.8 12 22 12 22Z"
+                        fill="currentColor"
+                    />
 
-        <div class="area-botao">
+                    <circle
+                        cx="12"
+                        cy="9.5"
+                        r="3"
+                        fill="#ffffff"
+                    />
+                </svg>
 
-            <button
-                id="btnEntrar"
-                class="btn-entrar"
-                type="button"
-            >
+                <p>
+                    Informações de transporte em
+                    <strong>Lagoa Alegre – PI</strong>
+                </p>
 
-                <span>
-                    Entrar
-                </span>
-
-                <span class="seta">
-                    →
-                </span>
-
-            </button>
-
-
-            <!-- =================================
-                 FRASE
-            ================================== -->
-
-            <p class="subtitulo">
-                Seu Caminho Mais Acessível
-            </p>
+            </div>
 
         </div>
+
+
+        <!-- RODAPÉ COM SLOGAN E CRÉDITO -->
+        <footer class="rodape">
+
+            <!-- SLOGAN -->
+            <div class="rodape-slogan">
+                Conectando você à sua cidade
+            </div>
+
+            <!-- DIVISÓRIA -->
+            <span
+                class="rodape-divisor"
+                aria-hidden="true"
+            ></span>
+
+            <!-- CRÉDITO DO DESENVOLVIMENTO -->
+            <div class="rodape-credito">
+
+                <span class="credito-texto">
+                    Criado por
+                </span>
+
+                <strong class="credito-marca">
+                    Dev<span>Tech</span> Tecnologias
+                </strong>
+
+            </div>
+
+        </footer>
 
     </main>
 
 
-    <!-- =====================================
-         JAVASCRIPT
-    ====================================== -->
-
+    <!-- JAVASCRIPT ORIGINAL -->
     <script src="js/tela_inicial.js"></script>
-
-    <footer class="rodape">
-    Criado e desenvolvido por <strong>Devs Tech</strong>
-</footer>
 
 </body>
 

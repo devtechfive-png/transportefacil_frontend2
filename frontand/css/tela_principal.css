@@ -8,80 +8,117 @@
     box-sizing: border-box;
 }
 
-
-/* =========================================
-   BODY
-========================================= */
-
 html,
 body {
     width: 100%;
     min-height: 100%;
 }
 
+html {
+    scroll-behavior: smooth;
+    background: #064a3b;
+}
 
 body {
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 
-    background: #f4f7f5;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f3f8f5;
+    color: #123f35;
+    line-height: 1.5;
 
-    color: #173b2c;
+    overflow-x: hidden;
 }
 
 
 /* =========================================
-   TELA PRINCIPAL
+   TOPO COM IMAGEM DE LAGOA ALEGRE
 ========================================= */
 
-.dashboard {
+.topo-rotas {
+    position: relative;
+    isolation: isolate;
+
     width: 100%;
-    min-height: 100vh;
-    background: #f4f7f5;
+    min-height: 260px;
+
+    padding: 0 0 25px;
+
+    background: #075c43;
+}
+
+.fundo-topo {
+    position: absolute;
+    inset: 0;
+
+    z-index: -1;
+
+    background-image:
+        linear-gradient(
+            rgba(3, 48, 37, 0.30),
+            rgba(3, 48, 37, 0.58)
+        ),
+        url("../lagoa%20alegre.jpeg");
+
+    background-size: cover;
+
+    /* Ajusta o enquadramento para destacar a imagem de Lagoa Alegre */
+    background-position: center 65%;
+
+    background-repeat: no-repeat;
 }
 
 
 /* =========================================
-   CABEÇALHO
+   CABEÇALHO FIXO SOBRE A IMAGEM
 ========================================= */
 
 .cabecalho {
-    height: 72px;
+    min-height: 58px;
 
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
 
-    z-index: 100;
+    width: 100%;
+
+    z-index: 1000;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    padding: 0 22px;
+    padding: 8px 22px;
 
-    background:
+    /* Mantém a fotografia visível atrás dos botões */
+    background-color: #075c43;
+
+    background-image:
         linear-gradient(
-            135deg,
-            #087c48,
-            #13a45b
-        );
+            rgba(3, 48, 37, 0.35),
+            rgba(3, 48, 37, 0.50)
+        ),
+        url("../lagoa%20alegre.jpeg");
 
-    color: white;
+    background-size: cover;
+    background-position: center 65%;
+    background-repeat: no-repeat;
 
-    box-shadow:
-        0 3px 12px
-        rgba(0, 0, 0, 0.15);
+    color: #fff;
+
+    box-shadow: none;
 }
 
-
 .cabecalho h1 {
-    font-size: 24px;
+    color: #fff;
 
-    font-weight: 600;
+    font-size: 23px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
 
-    letter-spacing: 0.2px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
 }
 
 
@@ -94,19 +131,19 @@ body {
     width: 42px;
     height: 42px;
 
-    border: none;
+    flex-shrink: 0;
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
     border-radius: 50%;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background:
-        rgba(255, 255, 255, 0.14);
+    background: rgba(0, 143, 83, 0.88);
+    color: #fff;
 
-    color: white;
-
-    font-size: 27px;
+    font-size: 25px;
 
     cursor: pointer;
 
@@ -115,18 +152,20 @@ body {
         transform 0.2s ease;
 }
 
-
 .btn-menu {
-    font-size: 30px;
+    font-size: 28px;
 }
-
 
 .btn-voltar:hover,
 .btn-menu:hover {
-    background:
-        rgba(255, 255, 255, 0.25);
+    background: #079b5d;
+    transform: scale(1.04);
+}
 
-    transform: scale(1.05);
+.btn-voltar:focus-visible,
+.btn-menu:focus-visible {
+    outline: 3px solid #8ce8b8;
+    outline-offset: 3px;
 }
 
 
@@ -137,29 +176,29 @@ body {
 .menu-dropdown {
     position: absolute;
 
-    top: 62px;
-    right: 18px;
+    top: 54px;
+    right: 24px;
 
-    width: 225px;
+    z-index: 1100;
 
-    padding: 8px;
+    width: 235px;
+    padding: 9px;
 
     display: flex;
     flex-direction: column;
 
-    background: white;
+    background: #fff;
 
-    border-radius: 14px;
+    border: 1px solid #e0eee6;
+    border-radius: 15px;
 
-    box-shadow:
-        0 10px 30px
-        rgba(0, 0, 0, 0.20);
+    box-shadow: 0 14px 35px rgba(5, 48, 35, 0.22);
 
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
 
-    transform:
-        translateY(-8px);
+    transform: translateY(-8px);
 
     transition:
         opacity 0.2s ease,
@@ -167,14 +206,12 @@ body {
         visibility 0.2s ease;
 }
 
-
 .menu-dropdown.aberto {
     opacity: 1;
-
     visibility: visible;
+    pointer-events: auto;
 
-    transform:
-        translateY(0);
+    transform: translateY(0);
 }
 
 
@@ -184,344 +221,333 @@ body {
 
 .item-menu {
     width: 100%;
-
     min-height: 46px;
 
     padding: 0 13px;
 
     border: none;
-
     border-radius: 9px;
 
     display: flex;
     align-items: center;
-
-    gap: 13px;
+    gap: 12px;
 
     background: transparent;
+    color: #234b3c;
 
-    color: #244536;
-
-    font-size: 15px;
-
+    font-size: 14px;
     text-align: left;
 
     cursor: pointer;
 
     transition:
-        background 0.2s ease;
+        background 0.2s ease,
+        color 0.2s ease;
 }
-
 
 .item-menu:hover {
     background: #edf7f1;
+    color: #08794b;
 }
-
 
 .icone-menu {
     width: 25px;
 
-    text-align: center;
+    flex-shrink: 0;
 
+    text-align: center;
     font-size: 18px;
 }
-
 
 .item-menu.sair {
     margin-top: 5px;
 
-    border-top:
-        1px solid #eeeeee;
-
+    border-top: 1px solid #e8eee9;
     border-radius: 0;
 
-    color: #c0392b;
+    color: #a83d36;
 }
 
 
 /* =========================================
-   CONTEÚDO
+   BUSCA SOBRE A IMAGEM
 ========================================= */
 
-.conteudo {
-    width: min(100%, 900px);
+.topo-rotas .area-busca {
+    position: relative;
 
-    margin: 0 auto;
+    width: calc(100% - 64px);
+    max-width: 950px;
 
-    padding:
-        28px
-        24px
-        50px;
-}
+    min-height: 50px;
 
-
-/* =========================================
-   TÍTULO
-========================================= */
-
-.titulo-secao {
-    margin-bottom: 22px;
-}
-
-
-.titulo-secao h2 {
-    color: #173b2c;
-
-    font-size: 28px;
-
-    font-weight: 700;
-}
-
-
-.titulo-secao p {
-    margin-top: 6px;
-
-    color: #718078;
-
-    font-size: 14px;
-}
-
-
-/* =========================================
-   BUSCA
-========================================= */
-
-.area-busca {
-    width: 100%;
-
-    height: 56px;
-
-    display: flex;
-    align-items: center;
-
-    gap: 12px;
+    /* Desce a busca para perto da parte inferior da imagem */
+    margin: 165px 0 0 32px;
 
     padding: 0 16px;
 
-    background: white;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 
-    border:
-        1px solid #dfe9e3;
+    background: #fff;
 
-    border-radius: 15px;
+    border: 1px solid #e1ece5;
+    border-radius: 35px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.13);
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.topo-rotas .area-busca:focus-within {
+    border-color: #58b887;
 
     box-shadow:
-        0 4px 15px
-        rgba(20, 80, 50, 0.06);
+        0 0 0 4px rgba(31, 157, 96, 0.12),
+        0 8px 25px rgba(0, 0, 0, 0.13);
 }
-
 
 .icone-busca {
-    font-size: 19px;
-}
+    flex-shrink: 0;
 
+    color: #08794b;
+    font-size: 20px;
+}
 
 .area-busca input {
     width: 100%;
-
-    height: 100%;
+    min-width: 0;
+    height: 50px;
 
     border: none;
-
     outline: none;
 
-    color: #244536;
-
     background: transparent;
+    color: #173f32;
 
-    font-size: 15px;
+    font-family: inherit;
+    font-size: 14px;
 }
-
 
 .area-busca input::placeholder {
-    color: #9aa6a0;
+    color: #8a9a91;
 }
-
 
 .btn-limpar {
     width: 30px;
     height: 30px;
 
-    border: none;
+    flex-shrink: 0;
 
+    border: none;
     border-radius: 50%;
 
-    background: #eef3ef;
-
-    color: #718078;
+    background: #eff5f1;
+    color: #5f796b;
 
     font-size: 22px;
-
     line-height: 1;
 
     cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
 }
 
-
 .btn-limpar:hover {
-    background: #e2ebe5;
+    background: #dcefe4;
+    color: #075c43;
 }
 
 
 /* =========================================
-   CABEÇALHO DOS RESULTADOS
+   CONTEÚDO PRINCIPAL
+========================================= */
+
+.conteudo {
+    flex: 1 0 auto;
+
+    width: 100%;
+    max-width: 1800px;
+
+    margin: 0 auto;
+
+    padding: 30px 36px 42px;
+}
+
+
+/* OCULTAR TÍTULO ANTERIOR */
+
+.titulo-secao {
+    display: none;
+}
+
+
+/* =========================================
+   CONTADOR DE RESULTADOS
 ========================================= */
 
 .cabecalho-resultados {
-    margin-top: 28px;
-
-    margin-bottom: 13px;
+    margin: 0 0 22px;
 
     display: flex;
-
     align-items: center;
+    justify-content: flex-end;
 
-    justify-content: space-between;
+    gap: 12px;
 }
-
 
 .cabecalho-resultados h3 {
-    font-size: 17px;
-
-    color: #244536;
+    display: none;
 }
 
-
 .cabecalho-resultados span {
-    padding: 5px 10px;
+    padding: 7px 13px;
 
-    border-radius: 20px;
+    border: 1px solid #dcefe4;
+    border-radius: 30px;
 
-    background: #e1f4e9;
-
-    color: #11894b;
+    background: #e7f5ed;
+    color: #087548;
 
     font-size: 12px;
+    font-weight: 700;
 
-    font-weight: bold;
+    white-space: nowrap;
 }
 
 
 /* =========================================
-   LISTA
+   LISTA DE ROTAS
 ========================================= */
 
 .lista-linhas {
-    display: flex;
+    display: grid;
 
-    flex-direction: column;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
 
-    gap: 14px;
+    align-items: stretch;
+
+    gap: 26px;
 }
 
 
 /* =========================================
-   CARD DA ROTA
+   CARTÕES DAS ROTAS
 ========================================= */
 
 .card-linha {
-    padding: 18px;
+    min-width: 0;
 
-    background: white;
+    /* Cards maiores, com mais espaço interno */
+    min-height: 310px;
 
-    border:
-        1px solid #e4ece7;
+    padding: 28px;
 
-    border-radius: 17px;
+    display: flex;
+    flex-direction: column;
 
-    box-shadow:
-        0 5px 18px
-        rgba(30, 80, 55, 0.07);
+    background: #fff;
+
+    border: 1px solid #e3eee7;
+    border-radius: 20px;
+
+    box-shadow: 0 7px 23px rgba(17, 70, 48, 0.07);
 
     transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        border-color 0.22s ease;
 }
 
-
 .card-linha:hover {
-    transform:
-        translateY(-2px);
+    transform: translateY(-3px);
 
-    box-shadow:
-        0 9px 24px
-        rgba(30, 80, 55, 0.12);
+    border-color: #d0e8d9;
+
+    box-shadow: 0 11px 27px rgba(17, 70, 48, 0.10);
 }
 
 
 /* =========================================
-   CABEÇALHO DO CARD
+   CABEÇALHO DOS CARTÕES
 ========================================= */
 
 .cabecalho-card {
     display: flex;
-
     align-items: center;
-
-    gap: 13px;
-}
-
-
-.icone-onibus {
-    width: 48px;
-    height: 48px;
-
-    flex-shrink: 0;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    border-radius: 12px;
-
-    background: #e6f6ed;
-
-    font-size: 25px;
-}
-
-
-.informacoes {
-    flex: 1;
+    gap: 15px;
 
     min-width: 0;
 }
 
+.icone-onibus {
+    width: 56px;
+    height: 56px;
 
-.informacoes h3 {
-    color: #173b2c;
+    flex-shrink: 0;
 
-    font-size: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #d9eee3;
+    border-radius: 14px;
+
+    background: #e6f5ed;
+    color: #075c43;
+
+    font-size: 28px;
 }
 
+.informacoes {
+    flex: 1;
+    min-width: 0;
+}
+
+.informacoes h3 {
+    overflow-wrap: anywhere;
+
+    color: #123f35;
+
+    font-size: 18px;
+    font-weight: 750;
+    line-height: 1.4;
+}
 
 .informacoes p {
-    margin-top: 4px;
+    margin-top: 5px;
 
-    color: #78877f;
+    color: #77877e;
 
     font-size: 12px;
+    line-height: 1.5;
 }
 
 
 /* =========================================
-   FAVORITO
+   BOTÃO FAVORITO
 ========================================= */
 
 .btn-favorito {
-    width: 38px;
-    height: 38px;
+    width: 41px;
+    height: 41px;
 
     flex-shrink: 0;
 
-    border: none;
-
+    border: 1px solid transparent;
     border-radius: 50%;
 
-    background: #f2f6f3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    color: #687a70;
+    background: #f2f7f4;
+    color: #315b49;
 
     font-size: 22px;
 
@@ -533,133 +559,115 @@ body {
         transform 0.2s ease;
 }
 
-
 .btn-favorito:hover {
-    background: #e7f5ed;
-
-    color: #13a45b;
+    background: #e2f3e9;
+    color: #08794b;
 }
 
-
 .btn-favorito.favoritado {
-    background: #e0f5e9;
-
-    color: #13a45b;
+    background: #d9f1e3;
+    color: #08794b;
 
     transform: scale(1.05);
 }
 
 
 /* =========================================
-   DETALHES
+   DETALHES DAS ROTAS
 ========================================= */
 
 .detalhes {
-    margin-top: 17px;
+    margin-top: 21px;
+    padding-top: 18px;
 
-    padding-top: 14px;
-
-    border-top:
-        1px solid #edf1ee;
+    border-top: 1px solid #eaf0ec;
 
     display: grid;
 
-    grid-template-columns:
-        repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 
-    gap: 18px 35px;
+    gap: 20px 24px;
 }
-
 
 .detalhes div {
-    display: flex;
+    min-width: 0;
 
+    display: flex;
     flex-direction: column;
 
-    gap: 4px;
-
-    min-width: 0;
+    gap: 5px;
 }
-
 
 .detalhes span {
-    color: #8a9891;
+    color: #84948b;
 
-    font-size: 11px;
+    font-size: 10px;
+    font-weight: 600;
 
     text-transform: uppercase;
-
-    letter-spacing: 0.3px;
+    letter-spacing: 0.45px;
 }
-
 
 .detalhes strong {
-    color: #315243;
+    color: #315344;
 
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: 650;
+    line-height: 1.5;
 
-    line-height: 1.4;
-
-    word-break: break-word;
+    overflow-wrap: anywhere;
 }
 
-
 .campo-dias {
-    grid-column:
-        1 / -1;
+    grid-column: 1 / -1;
 }
 
 
 /* =========================================
-   BOTÃO DETALHES
+   BOTÃO DE INFORMAÇÕES DA ROTA
 ========================================= */
 
 .btn-horarios {
     width: 100%;
+    min-height: 47px;
 
-    height: 44px;
+    margin-top: auto;
+    padding: 12px 14px;
 
-    margin-top: 17px;
-
-    border: none;
-
+    border: 1px solid #dcefe4;
     border-radius: 11px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     gap: 8px;
 
-    background: #e8f7ef;
-
-    color: #0d934d;
+    background: #e7f5ed;
+    color: #087548;
 
     font-size: 13px;
+    font-weight: 750;
 
-    font-weight: bold;
+    text-align: center;
 
     cursor: pointer;
 
     transition:
         background 0.2s ease,
+        border-color 0.2s ease,
         transform 0.2s ease;
 }
 
-
 .btn-horarios:hover {
-    background: #d9f1e3;
+    background: #d8efe2;
+    border-color: #c8e6d4;
 
-    transform:
-        translateY(-1px);
+    transform: translateY(-1px);
 }
 
-
 .btn-horarios:active {
-    transform:
-        scale(0.98);
+    transform: scale(0.985);
 }
 
 
@@ -670,36 +678,31 @@ body {
 .sem-resultados {
     display: none;
 
-    padding: 45px 20px;
+    padding: 50px 20px;
 
     text-align: center;
 }
-
 
 .sem-resultados.mostrar {
     display: block;
 }
 
-
 .sem-resultados > span {
+    color: #168253;
     font-size: 35px;
 }
-
 
 .sem-resultados h3 {
     margin-top: 12px;
 
-    color: #40584b;
-
-    font-size: 17px;
+    color: #234c3b;
+    font-size: 18px;
 }
 
-
 .sem-resultados p {
-    margin-top: 6px;
+    margin-top: 7px;
 
-    color: #87948e;
-
+    color: #7a8c81;
     font-size: 13px;
 }
 
@@ -711,156 +714,472 @@ body {
 .carregando-rotas {
     padding: 45px 20px;
 
-    text-align: center;
-
     color: #718078;
-}
 
+    text-align: center;
+}
 
 .carregando-rotas span {
     display: block;
 
-    font-size: 32px;
-
     margin-bottom: 10px;
-}
 
+    font-size: 32px;
+}
 
 .carregando-rotas p {
     font-size: 14px;
 }
 
-
 .carregando-rotas button {
     margin-top: 15px;
-
     padding: 10px 18px;
 
-    border: none;
-
+    border: 1px solid #dcefe4;
     border-radius: 10px;
 
-    background: #e8f7ef;
+    background: #e7f5ed;
+    color: #087548;
 
-    color: #0d934d;
-
-    font-weight: bold;
+    font-weight: 700;
 
     cursor: pointer;
 }
 
-
 .carregando-rotas button:hover {
-    background: #d9f1e3;
+    background: #d8efe2;
 }
 
 
 /* =========================================
-   RESPONSIVIDADE
+   RODAPÉ INSTITUCIONAL
+   DEPOIS DO ÚLTIMO CARD
+========================================= */
+
+.rodape {
+    flex-shrink: 0;
+
+    width: 100%;
+
+    margin-top: auto;
+    padding: 16px 24px;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    align-items: center;
+
+    background: #064a3b;
+    border: none;
+
+    color: #e1eee7;
+
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.rodape-item {
+    min-width: 0;
+    min-height: 42px;
+
+    padding: 4px 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+}
+
+.rodape-item + .rodape-item {
+    border-left: 1px solid rgba(255, 255, 255, 0.30);
+}
+
+.rodape-icone {
+    flex-shrink: 0;
+
+    color: #e5f5ec;
+
+    font-size: 24px;
+    line-height: 1;
+}
+
+.rodape-texto {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+.rodape-texto strong {
+    color: #fff;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.rodape-texto span {
+    color: #d5e6dc;
+}
+
+.rodape-texto a {
+    color: #d5e6dc;
+
+    text-decoration: none;
+    overflow-wrap: anywhere;
+
+    transition: color 0.2s ease;
+}
+
+.rodape-texto a:hover {
+    color: #54dda0;
+    text-decoration: underline;
+}
+
+.rodape-credito {
+    flex-wrap: wrap;
+
+    text-align: center;
+
+    gap: 4px;
+}
+
+.rodape-credito > span {
+    color: #d5e6dc;
+}
+
+.rodape-credito strong {
+    color: #fff;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.marca-dev {
+    color: #36ce85;
+}
+
+
+/* =========================================
+   ACESSIBILIDADE
+========================================= */
+
+button:focus-visible {
+    outline: 3px solid #68dba0;
+    outline-offset: 3px;
+}
+
+
+/* =========================================
+   TELAS MÉDIAS
+========================================= */
+
+@media (max-width: 1200px) {
+
+    .conteudo {
+        padding: 26px 28px 36px;
+    }
+
+    .lista-linhas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+    }
+
+    .card-linha {
+        min-height: 290px;
+        padding: 24px;
+    }
+
+    .rodape {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        row-gap: 12px;
+        padding: 18px;
+    }
+
+    .rodape-item:nth-child(3) {
+        border-left: none;
+    }
+}
+
+
+/* =========================================
+   CELULARES
 ========================================= */
 
 @media (max-width: 600px) {
 
-    .cabecalho {
-        height: 64px;
+    /* TOPO */
 
-        padding: 0 15px;
+    .topo-rotas {
+        min-height: 220px;
+        padding-bottom: 20px;
     }
 
+    .fundo-topo {
+        background-position: center 65%;
+
+        background-image:
+            linear-gradient(
+                rgba(3, 48, 37, 0.50),
+                rgba(3, 48, 37, 0.72)
+            ),
+            url("../lagoa%20alegre.jpeg");
+    }
+
+
+    /* CABEÇALHO FIXO SOBRE A IMAGEM */
+
+    .cabecalho {
+        min-height: 48px;
+        padding: 6px 12px;
+
+        background-position: center 65%;
+    }
 
     .cabecalho h1 {
-        font-size: 21px;
+        font-size: 18px;
+        text-align: center;
     }
-
 
     .btn-voltar,
     .btn-menu {
-        width: 38px;
-        height: 38px;
+        width: 36px;
+        height: 36px;
+
+        font-size: 22px;
     }
 
+    .btn-menu {
+        font-size: 25px;
+    }
 
     .menu-dropdown {
-        top: 57px;
-
+        top: 44px;
         right: 12px;
+
+        width: min(235px, calc(100vw - 24px));
     }
 
+
+    /* BUSCA */
+
+    .topo-rotas .area-busca {
+        width: calc(100% - 28px);
+        max-width: none;
+
+        min-height: 46px;
+
+        margin: 125px 0 0 14px;
+
+        padding: 0 11px;
+
+        gap: 9px;
+
+        border-radius: 28px;
+    }
+
+    .area-busca input {
+        height: 46px;
+        font-size: 13px;
+    }
+
+    .icone-busca {
+        font-size: 18px;
+    }
+
+
+    /* CONTEÚDO */
 
     .conteudo {
-        padding:
-            22px
-            15px
-            40px;
+        padding: 22px 14px 30px;
+    }
+
+    .cabecalho-resultados {
+        margin-bottom: 17px;
+    }
+
+    .lista-linhas {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 19px;
     }
 
 
-    .titulo-secao h2 {
+    /* CARDS */
+
+    .card-linha {
+        min-height: 265px;
+
+        padding: 21px;
+
+        border-radius: 17px;
+    }
+
+    .cabecalho-card {
+        gap: 11px;
+    }
+
+    .icone-onibus {
+        width: 48px;
+        height: 48px;
+
         font-size: 24px;
     }
 
-
-    .detalhes {
-        grid-template-columns: 1fr;
-
-        gap: 15px;
-    }
-
-
-    .campo-dias {
-        grid-column: auto;
-    }
-
-}
-
-
-@media (max-width: 380px) {
-
-    .cabecalho-resultados {
-        align-items: flex-start;
-
-        flex-direction: column;
-
-        gap: 8px;
-    }
-
-
-    .card-linha {
-        padding: 15px;
-    }
-
-
     .informacoes h3 {
-        font-size: 15px;
+        font-size: 16px;
     }
-
 
     .informacoes p {
         font-size: 11px;
     }
 
-}
+    .btn-favorito {
+        width: 37px;
+        height: 37px;
+    }
 
+
+    /* DETALHES */
+
+    .detalhes {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 15px 12px;
+
+        margin-top: 16px;
+        padding-top: 15px;
+    }
+
+    .campo-dias {
+        grid-column: 1 / -1;
+    }
+
+    .detalhes strong {
+        font-size: 12px;
+    }
+
+    .btn-horarios {
+        min-height: 43px;
+
+        margin-top: 16px;
+
+        font-size: 12px;
+    }
+
+
+    /* RODAPÉ */
+
+    .rodape {
+        grid-template-columns: minmax(0, 1fr);
+
+        gap: 0;
+
+        padding: 12px 18px;
+    }
+
+    .rodape-item {
+        justify-content: flex-start;
+        padding: 10px 5px;
+    }
+
+    .rodape-item + .rodape-item {
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.20);
+    }
+
+    .rodape-icone {
+        font-size: 22px;
+    }
+
+    .rodape-texto strong {
+        font-size: 12px;
+    }
+
+    .rodape-credito {
+        justify-content: flex-start;
+        text-align: left;
+    }
+}
 
 
 /* =========================================
-   RODAPÉ - DEVS TECH
+   CELULARES PEQUENOS
 ========================================= */
 
-.rodape {
-    width: 100%;
-    text-align: center;
-    padding: 18px 20px;
-    margin-top: 30px;
+@media (max-width: 380px) {
 
-    font-size: 13px;
-    color: lab(54.31% -27.29 12.18 / 0.75);
+    .cabecalho {
+        padding: 6px 10px;
+    }
 
-    box-sizing: border-box;
+    .cabecalho h1 {
+        font-size: 16px;
+    }
+
+    .topo-rotas {
+        min-height: 210px;
+    }
+
+    .topo-rotas .area-busca {
+        width: calc(100% - 20px);
+
+        margin-left: 10px;
+
+        padding: 0 9px;
+    }
+
+    .area-busca input {
+        font-size: 12px;
+    }
+
+    .conteudo {
+        padding: 18px 10px 24px;
+    }
+
+    .card-linha {
+        min-height: 245px;
+        padding: 16px;
+    }
+
+    .informacoes h3 {
+        font-size: 14px;
+    }
+
+    .detalhes {
+        gap: 12px 9px;
+    }
+
+    .detalhes span {
+        font-size: 9px;
+    }
+
+    .detalhes strong {
+        font-size: 11px;
+    }
+
+    .rodape {
+        padding: 10px 14px;
+    }
 }
 
-.rodape strong {
-    font-weight: 600;
-    color: lab(54.31% -27.29 12.18 / 0.75)
-;
+
+/* =========================================
+   REDUÇÃO DE MOVIMENTO
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+
+        transition-duration: 0.01ms !important;
+
+        animation-duration: 0.01ms !important;
+    }
 }

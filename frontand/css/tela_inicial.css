@@ -1,5 +1,5 @@
 /* =========================================
-RESET
+   RESET GERAL
 ========================================= */
 
 * {
@@ -10,787 +10,1104 @@ RESET
 
 
 /* =========================================
-BODY
+   CONFIGURAÇÕES GERAIS
 ========================================= */
 
-html,
-body {
+html {
     width: 100%;
-    height: 100%;
+    min-height: 100%;
 }
 
 body {
-    overflow: hidden;
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
 
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 
-    background: #073d2a;
+    background: #043e35;
 }
 
 
 /* =========================================
-TELA INICIAL
+   TELA INICIAL
+   MANTÉM A IMAGEM ORIGINAL
 ========================================= */
 
 .tela-inicial {
-
-    width: 100%;
-    height: 100vh;
-
-    min-height: 520px;
-
     position: relative;
 
+    width: 100%;
+    min-height: 100vh;
+
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
-
     justify-content: center;
 
-    padding:
-        5vh
-        6%
-        4vh;
+    padding: 28px 5% 20px;
 
-    background-image:
-        url("../lagoa alegre.jpeg");
-
+    background-image: url("../lagoa alegre.jpeg");
     background-size: cover;
-
-    background-position: center;
-
+    background-position: center center;
     background-repeat: no-repeat;
+
+    isolation: isolate;
 }
 
 
 /* =========================================
-CAMADA VERDE SOBRE A IMAGEM
+   SOBREPOSIÇÃO ESCURA
+   PRESERVA A IMAGEM DE FUNDO
 ========================================= */
 
 .overlay {
-
     position: absolute;
-
     inset: 0;
+
+    z-index: -1;
 
     background:
         linear-gradient(
-            135deg,
-            rgba(4, 91, 59, 0.48),
-            rgba(7, 116, 73, 0.40),
-            rgba(2, 66, 44, 0.52)
+            180deg,
+            rgba(0, 34, 39, 0.66) 0%,
+            rgba(0, 48, 42, 0.67) 48%,
+            rgba(0, 43, 35, 0.90) 100%
         );
-
-    z-index: 0;
 }
 
 
 /* =========================================
-CONTEÚDO
+   CONTEÚDO PRINCIPAL
 ========================================= */
 
 .conteudo {
-
     position: relative;
-
-    z-index: 2;
+    z-index: 1;
 
     width: 100%;
+    max-width: 1100px;
+
+    flex: 1;
 
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
-
     justify-content: center;
 
     text-align: center;
 
-    animation:
-        aparecer 0.9s ease forwards;
+    animation: aparecer 0.8s ease both;
 }
 
 
 /* =========================================
-LOGO
+   LOGO E ÍCONE
 ========================================= */
 
 .logo {
-
     display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-}
-
-
-/* =========================================
-ÍCONE
-========================================= */
-
-.icone-onibus {
-
-    width: 72px;
-
-    height: 72px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background:
-        rgba(0, 0, 0, 0.65);
-
-    border-radius: 14px;
-
-    box-shadow:
-        0 8px 25px
-        rgba(0, 0, 0, 0.25);
-}
-
-.icone-onibus span {
-
-    font-size: 39px;
-
-    line-height: 1;
-}
-
-
-/* =========================================
-NOME DO APLICATIVO
-========================================= */
-
-.nome-aplicativo {
-
-    display: flex;
-
     flex-direction: column;
-
     align-items: center;
-
     justify-content: center;
 
-    line-height: 0.9;
+    gap: 12px;
+
+    margin-bottom: 15px;
 }
 
 
 /* =========================================
-TRANSPORTE
+   ÍCONE DE ÔNIBUS
 ========================================= */
 
-.transporte {
+.icone-marca {
+    width: 86px;
+    height: 86px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     color: #ffffff;
 
-    font-size:
-        clamp(34px, 6vw, 58px);
+    background:
+        linear-gradient(
+            140deg,
+            #39ec80,
+            #009e59
+        );
 
-    font-weight: 400;
+    border-radius: 25px;
 
-    letter-spacing: -1px;
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.28),
+        inset 0 1px 1px rgba(255, 255, 255, 0.35);
+}
 
-    text-shadow:
-        0 3px 12px
-        rgba(0, 0, 0, 0.20);
+.icone-marca svg {
+    width: 62%;
+    height: 62%;
 }
 
 
 /* =========================================
-FÁCIL
+   NOME DO APLICATIVO
+========================================= */
+
+.nome-aplicativo {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: center;
+
+    gap: 12px;
+
+    max-width: 100%;
+
+    font-size: clamp(36px, 5.2vw, 76px);
+    line-height: 1.05;
+
+    font-weight: 800;
+    letter-spacing: -2px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   PALAVRA TRANSPORTE
+========================================= */
+
+.transporte {
+    color: #ffffff;
+
+    text-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.30);
+}
+
+
+/* =========================================
+   PALAVRA FÁCIL
 ========================================= */
 
 .facil {
+    position: relative;
 
-    color: #35c875;
+    color: #25df78;
 
-    font-family: cursive;
-
-    font-size:
-        clamp(42px, 7vw, 66px);
-
-    font-weight: bold;
-
+    font-weight: 800;
     font-style: italic;
 
     text-shadow:
-        0 2px 10px
-        rgba(0, 0, 0, 0.25);
+        0 3px 12px rgba(0, 0, 0, 0.25);
 }
 
 
 /* =========================================
-ÁREA DOS BOTÕES
+   SUBTÍTULO
+========================================= */
+
+.conteudo > .subtitulo {
+    max-width: 720px;
+
+    margin-top: 7px;
+    margin-bottom: 26px;
+
+    color: rgba(255, 255, 255, 0.94);
+
+    font-size: clamp(16px, 1.8vw, 25px);
+    line-height: 1.45;
+
+    font-weight: 400;
+    letter-spacing: 0.1px;
+
+    text-align: center;
+
+    text-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.subtitulo strong {
+    color: #24e984;
+    font-weight: 700;
+}
+
+
+/* =========================================
+   ÁREA DO BOTÃO
 ========================================= */
 
 .area-botao {
+    position: relative;
+    z-index: 2;
 
     width: 100%;
 
-    position: relative;
-
-    z-index: 2;
-
     display: flex;
-
-    flex-direction: column;
-
     align-items: center;
-
     justify-content: center;
 
-    gap: 11px;
-
-    margin-top: 7vh;
-
-    animation:
-        subir 1s ease 0.2s forwards;
-
-    opacity: 0;
+    animation: subir 0.8s ease 0.15s both;
 }
 
 
 /* =========================================
-BOTÃO ENTRAR
+   BOTÃO ENTRAR
 ========================================= */
 
 .btn-entrar {
+    position: relative;
 
-    width: min(100%, 540px);
+    width: min(100%, 440px);
+    min-height: 76px;
 
-    height: 68px;
-
-    padding:
-        0 28px;
-
-    border: none;
-
-    border-radius: 18px;
+    padding: 12px 76px 12px 30px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
-    gap: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.95);
+    border-radius: 45px;
 
     background:
         linear-gradient(
-            135deg,
-            #20b866,
-            #0d994d
+            110deg,
+            #ffffff,
+            #effff5
         );
 
-    color: white;
+    color: #064b38;
 
-    font-size: 24px;
-
-    font-weight: 700;
-
-    letter-spacing: 0.3px;
+    font-family: inherit;
+    font-size: 25px;
+    font-weight: 800;
 
     cursor: pointer;
 
     box-shadow:
-        0 12px 30px
-        rgba(0, 0, 0, 0.30),
-
-        inset 0 1px 0
-        rgba(255, 255, 255, 0.20);
+        0 12px 30px rgba(0, 0, 0, 0.25);
 
     transition:
         transform 0.25s ease,
         box-shadow 0.25s ease,
-        filter 0.25s ease;
+        background 0.25s ease;
 }
 
 
 /* =========================================
-SETA
+   SETA DO BOTÃO
 ========================================= */
 
 .seta {
+    position: absolute;
+    right: 12px;
 
-    width: 37px;
+    width: 54px;
+    height: 54px;
 
-    height: 37px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     border-radius: 50%;
 
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
     background:
-        rgba(255, 255, 255, 0.18);
+        linear-gradient(
+            135deg,
+            #28e580,
+            #009b52
+        );
 
-    font-size: 23px;
+    color: #ffffff;
+
+    font-size: 34px;
+    line-height: 1;
 
     transition:
-        transform 0.25s ease;
+        transform 0.25s ease,
+        background 0.25s ease;
 }
 
 
 /* =========================================
-HOVER ENTRAR
+   EFEITO AO PASSAR O MOUSE
 ========================================= */
 
 .btn-entrar:hover {
-
-    transform:
-        translateY(-3px);
-
-    filter:
-        brightness(1.06);
+    transform: translateY(-3px);
 
     box-shadow:
-        0 16px 35px
-        rgba(0, 0, 0, 0.35),
-
-        0 0 25px
-        rgba(25, 179, 94, 0.25);
+        0 16px 35px rgba(0, 0, 0, 0.35);
 }
 
 .btn-entrar:hover .seta {
-
-    transform:
-        translateX(5px);
+    transform: translateX(3px);
 }
 
 
 /* =========================================
-CLICK
+   EFEITO AO CLICAR
 ========================================= */
 
 .btn-entrar:active {
+    transform: scale(0.98);
+}
 
-    transform:
-        translateY(1px)
-        scale(0.98);
+.btn-entrar:focus-visible {
+    outline: 3px solid #7effb4;
+    outline-offset: 5px;
 }
 
 
 /* =========================================
-FRASE ABAIXO DO BOTÃO
+   SERVIÇOS: ROTAS, HORÁRIOS E PARADAS
 ========================================= */
 
-.area-botao .subtitulo {
+.servicos {
+    width: 100%;
+    max-width: 850px;
 
-    margin-top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    max-width: 600px;
+    margin-top: 35px;
 
-    color:
-        rgba(255, 255, 255, 0.90);
+    animation: subir 0.9s ease 0.25s both;
+}
 
-    font-size: 14px;
 
-    line-height: 1.4;
+/* =========================================
+   ITEM INDIVIDUAL
+========================================= */
 
-    letter-spacing: 0.4px;
+.servico {
+    position: relative;
+
+    flex: 1;
+    min-width: 0;
+
+    min-height: 76px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 13px;
+
+    padding: 8px 16px;
+}
+
+
+/* =========================================
+   DIVISÓRIAS DISCRETAS
+========================================= */
+
+.servico + .servico::before {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    top: 15%;
+
+    width: 1px;
+    height: 70%;
+
+    background:
+        rgba(255, 255, 255, 0.45);
+}
+
+
+/* =========================================
+   ÍCONES DOS SERVIÇOS
+========================================= */
+
+.servico-icone {
+    flex: 0 0 52px;
+
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #29ed95;
+}
+
+.servico-icone svg {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* =========================================
+   TEXTOS DOS SERVIÇOS
+========================================= */
+
+.servico-texto {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 5px;
+
+    color: #ffffff;
+
+    text-align: left;
+}
+
+.servico-texto strong {
+    font-size: 18px;
+    font-weight: 800;
+
+    line-height: 1.2;
+}
+
+.servico-texto span {
+    color: rgba(255, 255, 255, 0.88);
+
+    font-size: 13px;
+    line-height: 1.35;
+}
+
+
+/* =========================================
+   INFORMAÇÕES DO MUNICÍPIO
+========================================= */
+
+.informacao-local {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 11px;
+
+    max-width: 100%;
+
+    margin-top: 29px;
+
+    color: #ffffff;
 
     text-align: center;
 
-    text-shadow:
-        0 2px 7px
-        rgba(0, 0, 0, 0.25);
+    animation: aparecer 1s ease 0.3s both;
 }
 
 
 /* =========================================
-BOTÃO ÁREA ADMINISTRATIVA
+   ÍCONE DE LOCALIZAÇÃO
 ========================================= */
 
-.btn-administrativo {
+.icone-localizacao {
+    flex: 0 0 25px;
 
-    min-height: 38px;
+    width: 25px;
+    height: 25px;
 
-    padding:
-        0 18px;
-
-    margin-top: 4px;
-
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.28);
-
-    border-radius: 10px;
-
-    background:
-        rgba(4, 61, 40, 0.42);
-
-    color:
-        rgba(255, 255, 255, 0.88);
-
-    font-size: 12px;
-
-    font-weight: 600;
-
-    letter-spacing: 0.2px;
-
-    cursor: pointer;
-
-    backdrop-filter: blur(4px);
-
-    -webkit-backdrop-filter: blur(4px);
-
-    box-shadow:
-        0 5px 15px
-        rgba(0, 0, 0, 0.15);
-
-    transition:
-        background 0.2s ease,
-        border-color 0.2s ease,
-        transform 0.2s ease,
-        color 0.2s ease;
+    color: #22e58c;
 }
 
 
 /* =========================================
-HOVER ADMINISTRATIVO
+   TEXTO DO MUNICÍPIO
 ========================================= */
 
-.btn-administrativo:hover {
+.informacao-local p {
+    color: rgba(255, 255, 255, 0.94);
 
-    background:
-        rgba(5, 91, 59, 0.68);
+    font-size: 15px;
+    line-height: 1.5;
+}
 
-    border-color:
-        rgba(255, 255, 255, 0.45);
-
-    color: white;
-
-    transform:
-        translateY(-1px);
+.informacao-local strong {
+    color: #ffffff;
+    font-weight: 800;
 }
 
 
 /* =========================================
-CLICK ADMINISTRATIVO
-========================================= */
-
-.btn-administrativo:active {
-
-    transform:
-        translateY(1px)
-        scale(0.98);
-}
-
-
-/* =========================================
-RODAPÉ
+   RODAPÉ
 ========================================= */
 
 .rodape {
+    position: relative;
+    z-index: 1;
 
-    margin-top: 8px;
+    width: 100%;
 
-    color:
-        rgba(255, 255, 255, 0.70);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    font-size: 12px;
+    flex-wrap: wrap;
+    gap: 9px;
 
-    letter-spacing: 0.3px;
+    padding: 22px 10px 0;
+
+    color: rgba(255, 255, 255, 0.82);
+
+    font-size: 14px;
+    line-height: 1.5;
+
+    text-align: center;
 }
 
 
 /* =========================================
-ANIMAÇÃO DO CONTEÚDO
+   CRÉDITO DEVTECH
+========================================= */
+
+.credito-texto {
+    color: rgba(255, 255, 255, 0.72);
+}
+
+.credito-marca {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.credito-marca span {
+    color: #28e580;
+    font-weight: 800;
+}
+
+
+/* =========================================
+   ANIMAÇÕES
 ========================================= */
 
 @keyframes aparecer {
-
     from {
-
         opacity: 0;
-
-        transform:
-            translateY(-20px);
+        transform: translateY(-12px);
     }
 
     to {
-
         opacity: 1;
-
-        transform:
-            translateY(0);
+        transform: translateY(0);
     }
 }
-
-
-/* =========================================
-ANIMAÇÃO DOS BOTÕES
-========================================= */
 
 @keyframes subir {
-
     from {
-
         opacity: 0;
-
-        transform:
-            translateY(25px);
+        transform: translateY(16px);
     }
 
     to {
-
         opacity: 1;
-
-        transform:
-            translateY(0);
+        transform: translateY(0);
     }
 }
 
 
 /* =========================================
-TABLET
+   TABLETS E TELAS MENORES
 ========================================= */
 
 @media (max-width: 800px) {
 
     .tela-inicial {
-
-        min-height: 520px;
-
-        padding:
-            5vh
-            6%
-            4vh;
+        padding: 25px 5% 18px;
     }
 
+    .nome-aplicativo {
+        font-size: clamp(34px, 6vw, 55px);
+        gap: 9px;
+        letter-spacing: -1.5px;
+    }
 
-    .area-botao {
+    .icone-marca {
+        width: 76px;
+        height: 76px;
+        border-radius: 21px;
+    }
 
-        margin-top: 6vh;
+    .conteudo > .subtitulo {
+        font-size: 18px;
+    }
+
+    .servicos {
+        max-width: 700px;
+        margin-top: 28px;
+    }
+
+    .servico {
+        gap: 8px;
+        padding: 8px;
+    }
+
+    .servico-icone {
+        flex-basis: 43px;
+        width: 43px;
+        height: 43px;
+    }
+
+    .servico-texto strong {
+        font-size: 16px;
+    }
+
+    .servico-texto span {
+        font-size: 12px;
+    }
+
+    .informacao-local {
+        margin-top: 23px;
     }
 }
 
 
 /* =========================================
-CELULAR
+   CELULARES
 ========================================= */
 
 @media (max-width: 600px) {
 
     .tela-inicial {
-
-        min-height: 500px;
-
-        height: 100vh;
+        min-height: 100vh;
 
         padding:
-            4vh
-            7%
-            3vh;
+            25px
+            6%
+            18px;
 
+        background-position: center center;
+    }
+
+    .conteudo {
         justify-content: center;
     }
 
-
-    .conteudo {
-
-        margin-top: -4vh;
-    }
-
-
     .logo {
-
-        gap: 11px;
+        gap: 10px;
+        margin-bottom: 12px;
     }
 
+    .icone-marca {
+        width: 66px;
+        height: 66px;
 
-    .icone-onibus {
-
-        width: 58px;
-
-        height: 58px;
-
-        border-radius: 11px;
+        border-radius: 19px;
     }
 
+    .nome-aplicativo {
+        flex-direction: column;
+        align-items: center;
 
-    .icone-onibus span {
+        gap: 0;
 
-        font-size: 31px;
+        font-size: clamp(37px, 10vw, 50px);
+        line-height: 1.03;
+
+        letter-spacing: -1px;
     }
 
+    .conteudo > .subtitulo {
+        max-width: 360px;
 
-    .transporte {
+        margin-top: 10px;
+        margin-bottom: 23px;
+
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .btn-entrar {
+        width: min(100%, 380px);
+        min-height: 64px;
+
+        padding: 10px 65px 10px 25px;
+
+        font-size: 21px;
+    }
+
+    .seta {
+        width: 46px;
+        height: 46px;
+
+        right: 8px;
 
         font-size: 30px;
     }
 
+    .servicos {
+        width: 100%;
 
-    .facil {
+        flex-direction: column;
+        align-items: stretch;
 
-        font-size: 40px;
+        gap: 0;
+
+        margin-top: 25px;
     }
 
+    .servico {
+        flex: auto;
 
-    .area-botao {
+        min-height: 64px;
 
-        margin-top: 5vh;
+        justify-content: flex-start;
 
-        gap: 9px;
+        gap: 15px;
+
+        padding: 10px 8%;
     }
 
+    .servico + .servico::before {
+        top: 0;
+        left: 8%;
+
+        width: 84%;
+        height: 1px;
+
+        background:
+            rgba(255, 255, 255, 0.20);
+    }
+
+    .servico-icone {
+        flex-basis: 42px;
+
+        width: 42px;
+        height: 42px;
+    }
+
+    .servico-texto strong {
+        font-size: 16px;
+    }
+
+    .servico-texto span {
+        font-size: 13px;
+    }
+
+    .informacao-local {
+        margin-top: 22px;
+        gap: 8px;
+    }
+
+    .icone-localizacao {
+        flex-basis: 21px;
+
+        width: 21px;
+        height: 21px;
+    }
+
+    .informacao-local p {
+        font-size: 13px;
+    }
+
+    .rodape {
+        gap: 5px;
+
+        padding-top: 20px;
+
+        font-size: 12px;
+    }
+}
+
+
+/* =========================================
+   CELULARES PEQUENOS
+========================================= */
+
+@media (max-width: 380px) {
+
+    .tela-inicial {
+        padding: 20px 5% 15px;
+    }
+
+    .icone-marca {
+        width: 58px;
+        height: 58px;
+    }
+
+    .nome-aplicativo {
+        font-size: 36px;
+    }
+
+    .conteudo > .subtitulo {
+        font-size: 14px;
+        margin-bottom: 18px;
+    }
 
     .btn-entrar {
-
-        width: 94%;
-
-        height: 61px;
-
-        border-radius: 17px;
-
-        font-size: 21px;
+        min-height: 58px;
+        font-size: 19px;
     }
-
 
     .seta {
-
-        width: 34px;
-
-        height: 34px;
-
-        font-size: 21px;
+        width: 40px;
+        height: 40px;
+        font-size: 27px;
     }
 
-
-    .area-botao .subtitulo {
-
-        font-size: 13px;
-
-        line-height: 1.4;
-
-        max-width: 330px;
+    .servicos {
+        margin-top: 17px;
     }
 
+    .servico {
+        min-height: 57px;
+    }
 
-    .btn-administrativo {
+    .servico-icone {
+        flex-basis: 36px;
 
-        min-height: 36px;
+        width: 36px;
+        height: 36px;
+    }
 
-        padding:
-            0 15px;
+    .informacao-local {
+        margin-top: 16px;
+    }
 
-        margin-top: 3px;
-
+    .rodape {
+        padding-top: 15px;
         font-size: 11px;
     }
 }
 
 
 /* =========================================
-CELULAR PEQUENO
+   ACESSIBILIDADE: MOVIMENTO REDUZIDO
 ========================================= */
 
-@media (max-width: 380px) {
+@media (prefers-reduced-motion: reduce) {
 
-    .tela-inicial {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
 
-        min-height: 480px;
-
-        padding:
-            3vh
-            6%
-            2vh;
-    }
-
-
-    .conteudo {
-
-        margin-top: -5vh;
-    }
-
-
-    .icone-onibus {
-
-        width: 52px;
-
-        height: 52px;
-    }
-
-
-    .icone-onibus span {
-
-        font-size: 28px;
-    }
-
-
-    .transporte {
-
-        font-size: 27px;
-    }
-
-
-    .facil {
-
-        font-size: 35px;
-    }
-
-
-    .area-botao {
-
-        margin-top: 4vh;
-    }
-
-
-    .btn-entrar {
-
-        width: 96%;
-
-        height: 57px;
-
-        font-size: 20px;
-    }
-
-
-    .area-botao .subtitulo {
-
-        font-size: 12px;
-    }
-
-
-    .btn-administrativo {
-
-        min-height: 34px;
-
-        padding:
-            0 13px;
-
-        font-size: 10px;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
     }
 }
 
 /* =========================================
-   RODAPÉ - DEVS TECH
+   AJUSTES FINAIS — TRANSPORTE FÁCIL
+========================================= */
+
+/* Fundo original mais suave e discreto */
+.overlay {
+    z-index: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0, 35, 36, 0.56) 0%,
+            rgba(0, 43, 38, 0.62) 52%,
+            rgba(0, 30, 26, 0.80) 100%
+        );
+}
+
+/* Mantém o conteúdo acima da camada do fundo */
+.conteudo,
+.rodape {
+    position: relative;
+    z-index: 1;
+}
+
+/* Nome do aplicativo na mesma linha */
+.nome-aplicativo {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: center;
+
+    flex-wrap: nowrap;
+    gap: 12px;
+
+    white-space: nowrap;
+    line-height: 1.1;
+    letter-spacing: -2px;
+
+    font-size: clamp(38px, 5.1vw, 76px);
+}
+
+/* Palavra Transporte */
+.transporte {
+    color: #ffffff;
+    font-weight: 800;
+}
+
+/* Palavra Fácil e o traço verde */
+.facil {
+    position: relative;
+    display: inline-block;
+
+    color: #21e77b;
+    font-weight: 800;
+    font-style: italic;
+
+    padding-bottom: 9px;
+}
+
+/* Traço decorativo embaixo de Fácil */
+.facil::after {
+    content: "";
+
+    position: absolute;
+    left: 4%;
+    bottom: 1px;
+
+    width: 94%;
+    height: 4px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #21e77b 12%,
+        #21e77b 85%,
+        transparent
+    );
+
+    border-radius: 50%;
+
+    transform: rotate(-1.5deg);
+}
+
+/* Dá um pouco mais de destaque à frase */
+.conteudo > .subtitulo {
+    margin-top: 10px;
+
+    font-size: clamp(16px, 1.8vw, 25px);
+    line-height: 1.45;
+}
+
+/* Evita que o título ultrapasse a tela no celular */
+@media (max-width: 600px) {
+
+    .nome-aplicativo {
+        flex-direction: column;
+        align-items: center;
+
+        gap: 0;
+
+        font-size: clamp(38px, 10vw, 52px);
+        letter-spacing: -1px;
+    }
+
+    .facil {
+        padding-bottom: 8px;
+    }
+
+    .facil::after {
+        height: 3px;
+    }
+}
+
+/* =========================================
+   RODAPÉ — TRANSPORTE FÁCIL
 ========================================= */
 
 .rodape {
+    position: relative;
+    z-index: 2;
+
     width: 100%;
-    text-align: center;
-    padding: 18px 20px;
-    margin-top: 30px;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-wrap: wrap;
+    gap: 25px;
+
+    margin-top: 24px;
+    padding: 18px 10px 6px;
+
+    color: rgba(255, 255, 255, 0.88);
+
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 13px;
-    color: lab(54.31% -27.29 12.18 / 0.75);
+    line-height: 1.5;
 
-    box-sizing: border-box;
+    text-align: center;
 }
 
-.rodape strong {
-    font-weight: 600;
-    color: lab(54.31% -27.29 12.18 / 0.75);
+/* Frase institucional */
+.rodape-slogan {
+    color: rgba(255, 255, 255, 0.90);
+
+    font-size: 13px;
+    font-weight: 400;
+
+    letter-spacing: 0.15px;
+}
+
+/* Separador vertical */
+.rodape-divisor {
+    display: block;
+
+    width: 1px;
+    height: 28px;
+
+    background: rgba(255, 255, 255, 0.50);
+}
+
+/* Crédito do desenvolvimento */
+.rodape-credito {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+/* Texto "Criado por" */
+.credito-texto {
+    color: rgba(255, 255, 255, 0.75);
+
+    font-size: 13px;
+    font-weight: 400;
+}
+
+/* Nome da equipe */
+.credito-marca {
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* Destaque verde em DevTech */
+.credito-marca span {
+    color: #25e583;
+    font-weight: 800;
+}
+
+/* =========================================
+   RODAPÉ EM CELULARES
+========================================= */
+
+@media (max-width: 600px) {
+
+    .rodape {
+        flex-direction: column;
+        gap: 8px;
+
+        margin-top: 18px;
+        padding: 14px 8px 4px;
+    }
+
+    .rodape-divisor {
+        width: 55px;
+        height: 1px;
+    }
+
+    .rodape-slogan {
+        font-size: 12px;
+    }
+
+    .credito-texto {
+        font-size: 12px;
+    }
+
+    .credito-marca {
+        font-size: 13px;
+    }
 }
