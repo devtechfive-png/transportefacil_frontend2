@@ -9,12 +9,18 @@
 // =========================================
 
 const formLogin =
-document.getElementById("formLogin");
-
+    document.getElementById("formLogin");
 
 const btnVoltar =
-document.getElementById("btnVoltar");
+    document.getElementById("btnVoltar");
 
+
+// =========================================
+// ENDEREÇO DO BACKEND
+// =========================================
+
+const API_URL =
+    "https://transporte-facil-api.onrender.com";
 
 
 // =========================================
@@ -36,19 +42,17 @@ if (btnVoltar) {
 }
 
 
-
 // =========================================
-// LOGIN
+// LOGIN ADMINISTRATIVO
 // =========================================
 
 if (formLogin) {
 
     formLogin.addEventListener(
         "submit",
-        function (evento) {
+        async function (evento) {
 
             evento.preventDefault();
-
 
 
             // =================================
@@ -60,42 +64,59 @@ if (formLogin) {
                     "usuario"
                 ).value.trim();
 
-
-
             const senha =
                 document.getElementById(
                     "senha"
                 ).value;
 
 
-
             // =================================
-            // CREDENCIAIS TEMPORÁRIAS
-            // =================================
-
-            const usuarioCorreto =
-                "admin@teste.com";
-
-
-            const senhaCorreta =
-                "admin123";
-
-
-
-            // =================================
-            // VERIFICAR LOGIN
+            // ENVIAR DADOS PARA O BACKEND
             // =================================
 
-            if (
-                usuario === usuarioCorreto &&
-                senha === senhaCorreta
-            ) {
+            try {
+
+                const resposta =
+                    await fetch(
+                        `${API_URL}/admin/login`,
+                        {
+
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+
+                            body: JSON.stringify({
+
+                                usuario: usuario,
+
+                                senha: senha
+
+                            })
+
+                        }
+                    );
 
 
-                console.log(
-                    "Login administrativo realizado."
-                );
+                const dados =
+                    await resposta.json();
 
+
+                // =================================
+                // VERIFICAR RESPOSTA
+                // =================================
+
+                if (!resposta.ok || !dados.sucesso) {
+
+                    alert(
+                        dados.mensagem ||
+                        "Usuário ou senha incorretos."
+                    );
+
+                    return;
+
+                }
 
 
                 // =================================
@@ -108,6 +129,10 @@ if (formLogin) {
                 );
 
 
+                console.log(
+                    "Login administrativo realizado."
+                );
+
 
                 // =================================
                 // IR PARA O DASHBOARD
@@ -119,17 +144,18 @@ if (formLogin) {
 
             }
 
+            catch (erro) {
 
-            else {
-
-
-                alert(
-                    "Usuário ou senha incorretos."
+                console.error(
+                    "Erro ao realizar login:",
+                    erro
                 );
 
+                alert(
+                    "Não foi possível conectar ao servidor."
+                );
 
             }
-
 
         }
     );

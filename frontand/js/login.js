@@ -1,3 +1,4 @@
+
 // =========================================
 // LOGIN - TRANSPORTE FÁCIL
 // =========================================
@@ -216,7 +217,7 @@ if (formLogin) {
 
     formLogin.addEventListener(
         "submit",
-        function (evento) {
+        async function (evento) {
 
             evento.preventDefault();
 
@@ -287,25 +288,85 @@ if (formLogin) {
                 "administrador"
             ) {
 
-                if (
-                    emailDigitado ===
-                        "admin@teste.com"
-                    &&
-                    senhaDigitada ===
-                        "admin123"
-                ) {
+                try {
+
+                    const resposta =
+                        await fetch(
+                            "https://transporte-facil-api.onrender.com/admin/login",
+                            {
+
+                                method: "POST",
+
+                                headers: {
+                                    "Content-Type": "application/json"
+                                },
+
+                                body: JSON.stringify({
+
+                                    usuario: emailDigitado,
+
+                                    senha: senhaDigitada
+
+                                })
+
+                            }
+                        );
+
+
+                    const dados =
+                        await resposta.json();
+
+
+                    if (
+                        !resposta.ok ||
+                        !dados.sucesso
+                    ) {
+
+                        if (mensagemErro) {
+
+                            mensagemErro.textContent =
+                                dados.mensagem ||
+                                "E-mail ou senha de administrador incorretos.";
+
+                        }
+
+                        return;
+
+                    }
+
+
+                    // =================================
+                    // CRIAR SESSÃO ADMINISTRATIVA
+                    // =================================
+
+                    sessionStorage.setItem(
+                        "adminLogado",
+                        "true"
+                    );
+
+
+                    // =================================
+                    // IR PARA O DASHBOARD
+                    // =================================
 
                     window.location.href =
                         "dashboard.html";
 
+
                 }
 
-                else {
+                catch (erro) {
+
+                    console.error(
+                        "Erro no login administrativo:",
+                        erro
+                    );
+
 
                     if (mensagemErro) {
 
                         mensagemErro.textContent =
-                            "E-mail ou senha de administrador incorretos.";
+                            "Não foi possível conectar ao servidor.";
 
                     }
 
