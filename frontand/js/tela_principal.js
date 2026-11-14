@@ -200,6 +200,11 @@ async function compartilhar() {
     const texto =
         "Conheça o Transporte Fácil!";
 
+    // Gera o endereço da tela inicial usando o domínio
+    // em que o sistema estiver publicado.
+    const linkInicial =
+        new URL("tela_inicial.html", window.location.href).href;
+
     if (navigator.share) {
 
         try {
@@ -213,7 +218,7 @@ async function compartilhar() {
                     texto,
 
                 url:
-                    window.location.href
+                    linkInicial
 
             });
 
